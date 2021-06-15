@@ -6,6 +6,9 @@ var answerButtonEl = document.getElementById("answer-btn");
 var introEl = document.getElementById("intro");
 var shuffledQuestions = "";
 var currentQuestionIndex = 0;
+var endGameEl = document.getElementById("end-game");
+var score = 0;
+var finalScoreEl = document.getElementById("final-score")
 
 var questions = [
   {
@@ -16,6 +19,8 @@ var questions = [
       { text: "An advance alien language", correct: false },
       { text: "A computer name", correct: false },
     ],
+  },
+  {
     question:
       "Which of the following is correct about features of JavaScript??",
     answers: [
@@ -27,6 +32,8 @@ var questions = [
       { text: "Both A and B.", correct: true },
       { text: "All of the above.", correct: false },
     ],
+  },
+  {
     question:
       "Which built-in method calls a function for each element in the array?",
     answers: [
@@ -35,6 +42,8 @@ var questions = [
       { text: "forEach()", correct: true },
       { text: "None of the above", correct: false },
     ],
+  },
+  {
     question:
       "Which of the following function of String object returns the calling string value converted to lower case?",
     answers: [
@@ -43,6 +52,8 @@ var questions = [
       { text: "toString()", correct: false },
       { text: "substring()", correct: false },
     ],
+  },
+  {
     question:
       "Which of the following function of Array object returns a string representing the array and its elements?",
     answers: [
@@ -60,11 +71,10 @@ var startGame = function () {
   startButtonEL.classList.add("hide");
   introEl.classList.add("hide");
   ContainerEl.classList.remove("hide");
-  nextButtonEl.classList.remove("hide");
+  //nextButtonEl.classList.remove("hide");
   questionEl.textContent = questions[currentQuestionIndex].question;
   createAnswerBtn();
 };
-
 
 
 //Funtion to create answer button on each new question.
@@ -76,11 +86,40 @@ var createAnswerBtn = function () {
     var thisButton = document.createElement("BUTTON");
     thisButton.classList.add("btn");
     thisButton.textContent = questions[currentQuestionIndex].answers[i].text;
+    if(questions[currentQuestionIndex].answers[i].correct){
+      thisButton.setAttribute("id", "true")
+
+    }
+    thisButton.addEventListener("click", showNextQuestion);
     answerButtonEl.append(thisButton);
   }
 };
 
-var showNextQuestion = function (question) {};
+var showNextQuestion = function () {
+  console.log(this.getAttribute("id"))
+  if(this.getAttribute("id") === "true"){
+    console.log("Correct!")
+    score = score +10;
+  }else{
+    console.log("Incorrect!")
+  }
+  currentQuestionIndex++;
+  if( currentQuestionIndex < questions.length){
+  questionEl.textContent = questions[currentQuestionIndex].question;
+  createAnswerBtn();
+  }else{
+    endGame();
+  }
+};
+
+var endGame = function() {
+   console.log("end game!")
+   ContainerEl.classList.add("hide");
+   endGameEl.classList.remove("hide");
+   //finalScoreEl.textContent += score;
+  finalScoreEl.innerHTML = "Score " + score;
+
+}
 
 var selectAnswer = function () {};
 //Event Listener for click to start game
