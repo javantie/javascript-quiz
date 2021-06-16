@@ -8,8 +8,10 @@ var shuffledQuestions = "";
 var currentQuestionIndex = 0;
 var endGameEl = document.getElementById("end-game");
 var score = 0;
-var finalScoreEl = document.getElementById("final-score")
+var finalScoreEl = document.getElementById("final-score");
 var answerPopUpEl = document.getElementById("ans-popup");
+var timerEl = document.getElementById("countdown");
+var timeUpEl = document.getElementById ("time-up");
 
 //Array with list of questions for game.
 var questions = [
@@ -76,8 +78,8 @@ var startGame = function () {
   //nextButtonEl.classList.remove("hide");
   questionEl.textContent = questions[currentQuestionIndex].question;
   createAnswerBtn();
+  //countDown();
 };
-
 
 //Funtion to create answer button on each new question.
 var createAnswerBtn = function () {
@@ -88,8 +90,8 @@ var createAnswerBtn = function () {
     var thisButton = document.createElement("BUTTON");
     thisButton.classList.add("btn");
     thisButton.textContent = questions[currentQuestionIndex].answers[i].text;
-    if(questions[currentQuestionIndex].answers[i].correct){
-      thisButton.setAttribute("id", "true")
+    if (questions[currentQuestionIndex].answers[i].correct) {
+      thisButton.setAttribute("id", "true");
     }
     thisButton.addEventListener("click", showNextQuestion);
     answerButtonEl.append(thisButton);
@@ -98,42 +100,63 @@ var createAnswerBtn = function () {
 
 //Function to show the next question
 var showNextQuestion = function () {
-  console.log(this.getAttribute("id"))
+  console.log(this.getAttribute("id"));
   //Verification statemant to check if selected answer is true.
-  if(this.getAttribute("id") === "true"){
-    console.log("Correct!")
-    answerPopUpEl.classList.remove("hide")
+  if (this.getAttribute("id") === "true") {
+    console.log("Correct!");
+    answerPopUpEl.classList.remove("hide");
     answerPopUpEl.textContent = "Correct!";
-    score = score +10;
-  }else{
-    console.log("Incorrect!")
-    answerPopUpEl.classList.remove("hide")
+    score = score + 10;
+  } else {
+    console.log("Incorrect!");
+    answerPopUpEl.classList.remove("hide");
     answerPopUpEl.textContent = "Wrong!";
   }
   //Increment question index
   currentQuestionIndex++;
   //Statement to check if we are on the last question
-  if( currentQuestionIndex < questions.length){
-  questionEl.textContent = questions[currentQuestionIndex].question;
-  createAnswerBtn();
-  }else{
+  if (currentQuestionIndex < questions.length) {
+    questionEl.textContent = questions[currentQuestionIndex].question;
+    createAnswerBtn();
+  } else {
     endGame();
   }
 };
 
+var countDown = function(){
+  var timeLeft = 25;
+  console.log(timeLeft)
+
+  var timeInterval = setInterval(function() {
+    if (timeLeft > 1) {
+      timerEl.textContent = timeLeft + ' seconds remaining';
+      timeLeft--;
+    } else if (timeLeft === 1) {
+      timerEl.textContent = timeLeft + ' second remaining';
+      timeLeft--;
+    } else {
+      timerEl.textContent = '0';
+      clearInterval(timeInterval);
+      alert("Time is up!")
+      endGame();
+    }
+  }, 1000);
+}
+
 //Code for the end of the game
-var endGame = function() {
-  console.log("end game!")
+var endGame = function () {
+  console.log("end game!");
   ContainerEl.classList.add("hide");
   endGameEl.classList.remove("hide");
   //finalScoreEl.textContent += score;
   finalScoreEl.innerHTML = "Your Final Score is " + score;
-  var resetButton = document.createElement("button")
-  resetButton.setAttribute("class","start-btn-btn" )
+  var resetButton = document.createElement("button");
+  resetButton.setAttribute("class", "start-btn-btn");
   resetButton.textContent = "Restart";
   endGameEl.appendChild(resetButton);
   //resetButton.addEventListener("click", resetGame)
-}
+};
+
 
 // var resetGame = function(){
 // endGameEl.classList.add("hide")
@@ -142,5 +165,8 @@ var endGame = function() {
 
 // }
 
+
+
+
 //Event Listener for click to start game
-startButtonEL.addEventListener("click", startGame);
+startButtonEL.addEventListener("click", startGame,);
