@@ -15,6 +15,11 @@ var timeUpEl = document.getElementById ("time-up");
 var playerName = document.getElementById("name-of-player");
 var submitButtonEl = document.getElementById("submit-btn");
 
+var playerStatsEl = document.getElementById("player-stats");
+var scoreDataEl = document.getElementById("scoredata");
+var goBackButtonEl = document.getElementById("return-btn")
+var clearScoreButtonEl= document.getElementById("clear-score")
+
 
 //Array with list of questions for game.
 var questions = [
@@ -132,10 +137,10 @@ var countDown = function(){
 
   var timeInterval = setInterval(function() {
     if (timeLeft > 1) {
-      timerEl.textContent = timeLeft + ' seconds remaining';
+      timerEl.textContent ="Time Left: " + timeLeft + " seconds";
       timeLeft--;
     } else if (timeLeft === 1) {
-      timerEl.textContent = timeLeft + ' second remaining';
+      timerEl.textContent ="Time Left: " + timeLeft + " seconds";
       timeLeft--;
     } else {
       timerEl.textContent = '0';
@@ -153,14 +158,20 @@ var endGame = function () {
   endGameEl.classList.remove("hide");
   //finalScoreEl.textContent += score;
   finalScoreEl.innerHTML = "Your Final Score is " + score;
-  var resetButton = document.createElement("button");
-  resetButton.setAttribute("class", "start-btn-btn");
-  resetButton.textContent = "Restart";
-  endGameEl.appendChild(resetButton);
-  //resetButton.addEventListener("click", resetGame)
+  // var resetButton = document.createElement("button");
+  // resetButton.setAttribute("class", "start-btn-btn");
+  // resetButton.textContent = "Restart";
+  // endGameEl.appendChild(resetButton);
+    //resetButton.addEventListener("click", resetGame)
 };
 
-var saveDate = function(){
+var showHighScore = function(){
+  endGameEl.classList.add("hide")
+  playerStatsEl.classList.remove("hide")
+}
+
+var saveData = function(event){
+  event.preventDefault();
   var playerName = document.getElementById("name-of-player").value;
   if (playerName === "") {
     alert("Name cannot be blank");
@@ -169,9 +180,10 @@ var saveDate = function(){
     // Save email and password to localStorage using `setItem()`
     localStorage.setItem("Player Name", playerName);
     localStorage.setItem("Score", score);
+    showHighScore();
   }
 };
-submitButtonEl.addEventListener("click", saveDate)
+submitButtonEl.addEventListener("click", saveData)
 
 
 // var resetGame = function(){

@@ -9,10 +9,10 @@
   </head>
   <body>
     <div id="timer-container" class="timer">
-      <h1>Time Left</h1>
-      <h2 id="countdown">25 Seconds</h2>
+      <span id="countdown">⏰</span>
       <p id="time-up"></p>
     </div>
+    <section id="main" class="">
     <div id="intro" class="intro-txt">
       <h1>Coding Quiz Challenge</h1>
       <p>
@@ -42,8 +42,8 @@
       </div>
     </div>
     <div id="end-game" class="hide">
-      <h1>This is the end of the game</h1>
-      <h2 id="final-score">This is your score</h2>
+      <h2>This is the end of the game</h2>
+      <h3 id="final-score">This is your score</h3>
       <form id="score-form" class="score-data">
         <label for="name">Your Name:</label>
         <input 
@@ -53,6 +53,13 @@
         <button id="submit-btn" class="submit">Submit</button>
       </form>
     </div>
+    <div id="player-stats" class="hide">
+       <h2> Your High Score!</h2>
+      <p id="scoredata">score data</p>
+      <button id="return-btn" class="submit">Go Back</button>
+      <button id="clear-score" class="submit"> Clear High Score</button>
+    </div>
+  </section>
   </body>
   <script src="./assets/js/script.js"></script>
 </html>
