@@ -12,6 +12,9 @@ var finalScoreEl = document.getElementById("final-score");
 var answerPopUpEl = document.getElementById("ans-popup");
 var timerEl = document.getElementById("countdown");
 var timeUpEl = document.getElementById ("time-up");
+var playerName = document.getElementById("name-of-player");
+var submitButtonEl = document.getElementById("submit-btn");
+
 
 //Array with list of questions for game.
 var questions = [
@@ -156,6 +159,19 @@ var endGame = function () {
   endGameEl.appendChild(resetButton);
   //resetButton.addEventListener("click", resetGame)
 };
+
+var saveDate = function(){
+  var playerName = document.getElementById("name-of-player").value;
+  if (playerName === "") {
+    alert("Name cannot be blank");
+  } else {
+    alert("Player saved successfully!");
+    // Save email and password to localStorage using `setItem()`
+    localStorage.setItem("Player Name", playerName);
+    localStorage.setItem("Score", score);
+  }
+};
+submitButtonEl.addEventListener("click", saveDate)
 
 
 // var resetGame = function(){
