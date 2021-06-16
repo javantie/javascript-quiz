@@ -237,11 +237,10 @@ var saveData = function (event) {
 
 //Function to reset the game
 var reStart = function () {
-  console.log("This function works");
+  location.reload()
 };
 //Funtion to clear high score
 var clearScore = function () {
-  console.log("This function works as well");
   localStorage.clear();
 };
 
