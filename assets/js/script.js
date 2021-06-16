@@ -74,8 +74,7 @@ var questions = [
     ],
   },
   {
-    question:
-      "Which of the following is not a valid JavaScript variable name?",
+    question: "Which of the following is not a valid JavaScript variable name?",
     answers: [
       { text: "_first_and_last_names", correct: false },
       { text: "FirstAndLast", correct: false },
@@ -84,8 +83,7 @@ var questions = [
     ],
   },
   {
-    question:
-      " Inside which HTML element do we put the JavaScript?",
+    question: " Inside which HTML element do we put the JavaScript?",
     answers: [
       { text: " <js>", correct: false },
       { text: "<scripting>", correct: false },
@@ -114,8 +112,7 @@ var questions = [
     ],
   },
   {
-    question:
-      "What is the correct JavaScript syntax to write Hello 'World'",
+    question: "What is the correct JavaScript syntax to write Hello 'World'",
     answers: [
       { text: " System.out.println 'Hello World'", correct: false },
       { text: "Swi println 'Hello World'", correct: false },
@@ -159,12 +156,12 @@ var showNextQuestion = function () {
   console.log(this.getAttribute("id"));
   //Verification statemant to check if selected answer is true.
   if (this.getAttribute("id") === "true") {
-    console.log("Correct!");
+    //console.log("Correct!");
     answerPopUpEl.classList.remove("hide");
     answerPopUpEl.textContent = "Correct! ✔️";
     score = score + 10;
   } else {
-    console.log("Incorrect!");
+    //console.log("Incorrect!");
     answerPopUpEl.classList.remove("hide");
     answerPopUpEl.textContent = "Wrong! ❌";
   }
@@ -180,8 +177,7 @@ var showNextQuestion = function () {
 };
 
 var countDown = function () {
-  var timeLeft = 25;
-  console.log(timeLeft);
+  var timeLeft = 20;
   var timeInterval = setInterval(function () {
     if (timeLeft > 1) {
       timerEl.textContent = "Time Left: " + timeLeft + " seconds";
@@ -200,7 +196,6 @@ var countDown = function () {
 
 //Code for the end of the game
 var endGame = function () {
-  console.log("end game!");
   ContainerEl.classList.add("hide");
   endGameEl.classList.remove("hide");
   finalScoreEl.innerHTML = "Your Final Score is " + score;
@@ -227,7 +222,6 @@ var saveData = function (event) {
   if (playerName === "") {
     alert("Name cannot be blank");
   } else {
-    alert("Player saved successfully!");
     // Save email and password to localStorage using `setItem()`
     localStorage.setItem("Player Name", playerName);
     localStorage.setItem("Score", score);
@@ -237,7 +231,7 @@ var saveData = function (event) {
 
 //Function to reset the game
 var reStart = function () {
-  location.reload()
+  location.reload();
 };
 //Funtion to clear high score
 var clearScore = function () {
