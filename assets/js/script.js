@@ -165,9 +165,19 @@ var endGame = function () {
     //resetButton.addEventListener("click", resetGame)
 };
 
+var loadData = function(){
+  var PlayerName = localStorage.getItem('Player Name');
+  var score = localStorage.getItem('Score');
+  if( PlayerName === null || score === null){
+    return;
+  }
+  scoreDataEl.textContent = score + " points!";
+}
+
 var showHighScore = function(){
   endGameEl.classList.add("hide")
   playerStatsEl.classList.remove("hide")
+  loadData();
 }
 
 var saveData = function(event){
@@ -184,6 +194,7 @@ var saveData = function(event){
   }
 };
 submitButtonEl.addEventListener("click", saveData)
+
 
 
 // var resetGame = function(){

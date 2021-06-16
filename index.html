@@ -13,53 +13,52 @@
       <p id="time-up"></p>
     </div>
     <section id="main" class="">
-    <div id="intro" class="intro-txt">
-      <h1>Coding Quiz Challenge</h1>
-      <p>
-        Try to asnwer the following code-related questions within the time
-        limit. <br />
-        Keep in mind that incorrect answers will penalize your socre/time by ten
-        seconds
-      </p>
-      <button id="start-btn" class="start-btn-btn">Start Quiz</button>
-    </div>
-    <div id="container" class="hide">
-      <div id="question-container">
-        <div id="question">Question</div>
-        <div id="answer-btn" class="btn-grid">
-          <button class="btn">Answer 1</button>
-          <button class="btn">Answer 2</button>
-          <button class="btn">Answer 3</button>
-          <button class="btn">Answer 4</button>
+      <div id="intro" class="intro-txt">
+        <h1>Coding Quiz Challenge</h1>
+        <p>
+          Try to asnwer the following code-related questions within the time
+          limit. <br />
+          Keep in mind that incorrect answers will penalize your socre/time by
+          ten seconds
+        </p>
+        <button id="start-btn" class="start-btn-btn">Start Quiz</button>
+      </div>
+      <div id="container" class="hide">
+        <div id="question-container">
+          <div id="question">Question</div>
+          <div id="answer-btn" class="btn-grid">
+            <button class="btn">Answer 1</button>
+            <button class="btn">Answer 2</button>
+            <button class="btn">Answer 3</button>
+            <button class="btn">Answer 4</button>
+          </div>
+          <hr />
+          <div id="ans-popup" class="hide">
+            <h2>Correct!</h2>
+          </div>
         </div>
-        <hr />
-        <div id="ans-popup" class="hide">
-          <h2>Correct!</h2>
+        <div class="controls">
+          <button id="next-btn" class="next-btn-btn hide">Next</button>
         </div>
       </div>
-      <div class="controls">
-        <button id="next-btn" class="next-btn-btn hide">Next</button>
+      <div id="end-game" class="hide">
+        <h2>This is the end of the game</h2>
+        <h3 id="final-score">This is your score</h3>
+        <form id="score-form" class="score-data">
+          <label for="name">Your Name:</label>
+          <input type="text" name="name-of-player" id="name-of-player" />
+          <button id="submit-btn" class="submit">Submit</button>
+        </form>
       </div>
-    </div>
-    <div id="end-game" class="hide">
-      <h2>This is the end of the game</h2>
-      <h3 id="final-score">This is your score</h3>
-      <form id="score-form" class="score-data">
-        <label for="name">Your Name:</label>
-        <input 
-        type="text"
-        name="player-name"
-        id="name-of-player" />
-        <button id="submit-btn" class="submit">Submit</button>
-      </form>
-    </div>
-    <div id="player-stats" class="hide">
-       <h2> Your High Score!</h2>
-      <p id="scoredata">score data</p>
-      <button id="return-btn" class="submit">Go Back</button>
-      <button id="clear-score" class="submit"> Clear High Score</button>
-    </div>
-  </section>
+      <div id="player-stats" class="hide">
+        <h2>Your High Score!</h2>
+        <span id="scoredata">score data</span>
+        <br />
+        <br />
+        <button id="return-btn">Go Back</button>
+        <button id="clear-score">Clear High Score</button>
+      </div>
+    </section>
   </body>
   <script src="./assets/js/script.js"></script>
 </html>
