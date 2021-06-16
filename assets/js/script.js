@@ -9,7 +9,9 @@ var currentQuestionIndex = 0;
 var endGameEl = document.getElementById("end-game");
 var score = 0;
 var finalScoreEl = document.getElementById("final-score")
+var answerPopUpEl = document.getElementById("ans-popup");
 
+//Array with list of questions for game.
 var questions = [
   {
     question: "What is JavaScript?",
@@ -81,29 +83,36 @@ var startGame = function () {
 var createAnswerBtn = function () {
   //clears inner HTML on each button.
   answerButtonEl.innerHTML = "";
-  //For loop to run thorugh each answer for each question and create corrisponding buttons
+  //For loop to run thorugh each array for each answer and create corresponding buttons for each.
   for (var i = 0; i < questions[currentQuestionIndex].answers.length; i++) {
     var thisButton = document.createElement("BUTTON");
     thisButton.classList.add("btn");
     thisButton.textContent = questions[currentQuestionIndex].answers[i].text;
     if(questions[currentQuestionIndex].answers[i].correct){
       thisButton.setAttribute("id", "true")
-
     }
     thisButton.addEventListener("click", showNextQuestion);
     answerButtonEl.append(thisButton);
   }
 };
 
+//Function to show the next question
 var showNextQuestion = function () {
   console.log(this.getAttribute("id"))
+  //Verification statemant to check if selected answer is true.
   if(this.getAttribute("id") === "true"){
     console.log("Correct!")
+    answerPopUpEl.classList.remove("hide")
+    answerPopUpEl.textContent = "Correct!";
     score = score +10;
   }else{
     console.log("Incorrect!")
+    answerPopUpEl.classList.remove("hide")
+    answerPopUpEl.textContent = "Wrong!";
   }
+  //Increment question index
   currentQuestionIndex++;
+  //Statement to check if we are on the last question
   if( currentQuestionIndex < questions.length){
   questionEl.textContent = questions[currentQuestionIndex].question;
   createAnswerBtn();
@@ -112,15 +121,26 @@ var showNextQuestion = function () {
   }
 };
 
+//Code for the end of the game
 var endGame = function() {
-   console.log("end game!")
-   ContainerEl.classList.add("hide");
-   endGameEl.classList.remove("hide");
-   //finalScoreEl.textContent += score;
-  finalScoreEl.innerHTML = "Score " + score;
-
+  console.log("end game!")
+  ContainerEl.classList.add("hide");
+  endGameEl.classList.remove("hide");
+  //finalScoreEl.textContent += score;
+  finalScoreEl.innerHTML = "Your Final Score is " + score;
+  var resetButton = document.createElement("button")
+  resetButton.setAttribute("class","start-btn-btn" )
+  resetButton.textContent = "Restart";
+  endGameEl.appendChild(resetButton);
+  //resetButton.addEventListener("click", resetGame)
 }
 
-var selectAnswer = function () {};
+// var resetGame = function(){
+// endGameEl.classList.add("hide")
+// answerPopUpEl.classList.add("hide")
+// startGame();
+
+// }
+
 //Event Listener for click to start game
 startButtonEL.addEventListener("click", startGame);
