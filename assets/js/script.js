@@ -11,25 +11,23 @@ var score = 0;
 var finalScoreEl = document.getElementById("final-score");
 var answerPopUpEl = document.getElementById("ans-popup");
 var timerEl = document.getElementById("countdown");
-var timeUpEl = document.getElementById ("time-up");
+var timeUpEl = document.getElementById("time-up");
 var playerName = document.getElementById("name-of-player");
 var submitButtonEl = document.getElementById("submit-btn");
-
 var playerStatsEl = document.getElementById("player-stats");
 var scoreDataEl = document.getElementById("scoredata");
-var goBackButtonEl = document.getElementById("return-btn")
-var clearScoreButtonEl= document.getElementById("clear-score")
-
+var goBackButtonEl = document.getElementById("return-btn");
+var clearScoreButtonEl = document.getElementById("clear-score");
 
 //Array with list of questions for game.
 var questions = [
   {
-    question: "What is JavaScript?",
+    question: "What are variables used for in JavaScript Programs?",
     answers: [
-      { text: "A Computer Language? ", correct: true },
-      { text: "A funny name of apples", correct: false },
-      { text: "An advance alien language", correct: false },
-      { text: "A computer name", correct: false },
+      { text: "Storing numbers, dates, or other values ", correct: true },
+      { text: "Varying randomly", correct: false },
+      { text: "Causing high-school algebra flashback", correct: false },
+      { text: "None of the above", correct: false },
     ],
   },
   {
@@ -75,6 +73,56 @@ var questions = [
       { text: "toString()", correct: true },
     ],
   },
+  {
+    question:
+      "Which of the following is not a valid JavaScript variable name?",
+    answers: [
+      { text: "_first_and_last_names", correct: false },
+      { text: "FirstAndLast", correct: false },
+      { text: "None of the above", correct: false },
+      { text: " 2names", correct: true },
+    ],
+  },
+  {
+    question:
+      " Inside which HTML element do we put the JavaScript?",
+    answers: [
+      { text: " <js>", correct: false },
+      { text: "<scripting>", correct: false },
+      { text: " <javascript>", correct: false },
+      { text: "  <script>", correct: true },
+    ],
+  },
+  {
+    question:
+      " Which of the following is not considered a JavaScript operator?",
+    answers: [
+      { text: " new", correct: false },
+      { text: "this", correct: true },
+      { text: " delete", correct: false },
+      { text: "   typeof", correct: false },
+    ],
+  },
+  {
+    question:
+      "  Using _______ statement is how you test for a specific condition",
+    answers: [
+      { text: "Select", correct: false },
+      { text: "Switch", correct: false },
+      { text: "If", correct: true },
+      { text: "For", correct: false },
+    ],
+  },
+  {
+    question:
+      "What is the correct JavaScript syntax to write Hello 'World'",
+    answers: [
+      { text: " System.out.println 'Hello World'", correct: false },
+      { text: "Swi println 'Hello World'", correct: false },
+      { text: " response.write 'Hello World'", correct: false },
+      { text: "document.write 'Hello World'", correct: true },
+    ],
+  },
 ];
 
 //Funtion to start game
@@ -113,12 +161,12 @@ var showNextQuestion = function () {
   if (this.getAttribute("id") === "true") {
     console.log("Correct!");
     answerPopUpEl.classList.remove("hide");
-    answerPopUpEl.textContent = "Correct!";
+    answerPopUpEl.textContent = "Correct! ✔️";
     score = score + 10;
   } else {
     console.log("Incorrect!");
     answerPopUpEl.classList.remove("hide");
-    answerPopUpEl.textContent = "Wrong!";
+    answerPopUpEl.textContent = "Wrong! ❌";
   }
   //Increment question index
   currentQuestionIndex++;
@@ -131,56 +179,49 @@ var showNextQuestion = function () {
   }
 };
 
-var countDown = function(){
+var countDown = function () {
   var timeLeft = 25;
-  console.log(timeLeft)
-
-  var timeInterval = setInterval(function() {
+  console.log(timeLeft);
+  var timeInterval = setInterval(function () {
     if (timeLeft > 1) {
-      timerEl.textContent ="Time Left: " + timeLeft + " seconds";
+      timerEl.textContent = "Time Left: " + timeLeft + " seconds";
       timeLeft--;
     } else if (timeLeft === 1) {
-      timerEl.textContent ="Time Left: " + timeLeft + " seconds";
+      timerEl.textContent = "Time Left: " + timeLeft + " seconds";
       timeLeft--;
     } else {
-      timerEl.textContent = '0';
+      timerEl.textContent = "Time Left: 0";
       clearInterval(timeInterval);
-      alert("Time is up!")
+      alert("Time is up!");
       endGame();
     }
   }, 1000);
-}
+};
 
 //Code for the end of the game
 var endGame = function () {
   console.log("end game!");
   ContainerEl.classList.add("hide");
   endGameEl.classList.remove("hide");
-  //finalScoreEl.textContent += score;
   finalScoreEl.innerHTML = "Your Final Score is " + score;
-  // var resetButton = document.createElement("button");
-  // resetButton.setAttribute("class", "start-btn-btn");
-  // resetButton.textContent = "Restart";
-  // endGameEl.appendChild(resetButton);
-    //resetButton.addEventListener("click", resetGame)
 };
 
-var loadData = function(){
-  var PlayerName = localStorage.getItem('Player Name');
-  var score = localStorage.getItem('Score');
-  if( PlayerName === null || score === null){
+var loadData = function () {
+  var PlayerName = localStorage.getItem("Player Name");
+  var score = localStorage.getItem("Score");
+  if (PlayerName === null || score === null) {
     return;
   }
-  scoreDataEl.textContent = score + " points!";
-}
+  scoreDataEl.textContent = PlayerName + ": " + " " + score + " points!";
+};
 
-var showHighScore = function(){
-  endGameEl.classList.add("hide")
-  playerStatsEl.classList.remove("hide")
+var showHighScore = function () {
+  endGameEl.classList.add("hide");
+  playerStatsEl.classList.remove("hide");
   loadData();
-}
+};
 
-var saveData = function(event){
+var saveData = function (event) {
   event.preventDefault();
   var playerName = document.getElementById("name-of-player").value;
   if (playerName === "") {
@@ -193,19 +234,19 @@ var saveData = function(event){
     showHighScore();
   }
 };
-submitButtonEl.addEventListener("click", saveData)
 
+//Function to reset the game
+var reStart = function () {
+  console.log("This function works");
+};
+//Funtion to clear high score
+var clearScore = function () {
+  console.log("This function works as well");
+  localStorage.clear();
+};
 
-
-// var resetGame = function(){
-// endGameEl.classList.add("hide")
-// answerPopUpEl.classList.add("hide")
-// startGame();
-
-// }
-
-
-
-
-//Event Listener for click to start game
-startButtonEL.addEventListener("click", startGame,);
+//Event Listeners
+submitButtonEl.addEventListener("click", saveData);
+startButtonEL.addEventListener("click", startGame);
+goBackButtonEl.addEventListener("click", reStart);
+clearScoreButtonEl.addEventListener("click", clearScore);
