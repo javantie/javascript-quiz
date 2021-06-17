@@ -1,0 +1,38 @@
+body{
+    text-align: center;
+}
+
+.container h2 {
+    color: rgb(79, 116, 23);
+    font-size: 50px;
+}
+
+#return-btn,
+#clear-score
+ {
+  margin-top: 15px;
+  font-weight: 700;
+  font-size: 20px;
+  background-color: rgba(61, 33, 126, 0.938);
+  border-radius: 5px;
+  color: white;
+  padding: 5px;
+}
+#return-btn a {
+color: white;
+text-decoration: none;
+}
+
+.score-data label {
+    font-weight: 600;
+}
+
+.score-data input {
+    border-radius: 10px;
+    background-color: rgba(228, 220, 220, 0.575);
+    outline: none;
+}
+
+#final-score {
+    margin: 30px 0px 50px 0px;
+}

@@ -18,6 +18,9 @@ var playerStatsEl = document.getElementById("player-stats");
 var scoreDataEl = document.getElementById("scoredata");
 var goBackButtonEl = document.getElementById("return-btn");
 var clearScoreButtonEl = document.getElementById("clear-score");
+var highScoreEl = document.getElementById("highs-score")
+var scoreLinkEl = document.getElementById("score-link")
+
 
 //Array with list of questions for game.
 var questions = [
@@ -206,6 +209,18 @@ var endGame = function () {
   finalScoreEl.innerHTML = "Your Final Score is " + score;
 };
 
+
+var pasteData = function(){
+  var PlayerName = localStorage.getItem("Player Name");
+  var score = localStorage.getItem("Score");
+  if (PlayerName === null || score === null) {
+    return;
+  }
+  highScoreEl.textContent = PlayerName + ": " + " " + score;
+}
+
+
+
 var loadData = function () {
   var PlayerName = localStorage.getItem("Player Name");
   var score = localStorage.getItem("Score");
@@ -248,3 +263,4 @@ submitButtonEl.addEventListener("click", saveData);
 startButtonEL.addEventListener("click", startGame);
 goBackButtonEl.addEventListener("click", reStart);
 clearScoreButtonEl.addEventListener("click", clearScore);
+scoreLinkEl.addEventListener("click", pasteData)
