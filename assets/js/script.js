@@ -7,7 +7,7 @@ var introEl = document.getElementById("intro");
 var shuffledQuestions = "";
 var currentQuestionIndex = 0;
 var endGameEl = document.getElementById("end-game");
-var score = 0;
+var score;
 var finalScoreEl = document.getElementById("final-score");
 var answerPopUpEl = document.getElementById("ans-popup");
 var timerEl = document.getElementById("countdown");
@@ -131,7 +131,7 @@ var startGame = function () {
   //nextButtonEl.classList.remove("hide");
   questionEl.textContent = questions[currentQuestionIndex].question;
   createAnswerBtn();
-  //countDown();
+  countDown();
 };
 
 //Funtion to create answer button on each new question.
@@ -153,17 +153,17 @@ var createAnswerBtn = function () {
 
 //Function to show the next question
 var showNextQuestion = function () {
-  console.log(this.getAttribute("id"));
   //Verification statemant to check if selected answer is true.
   if (this.getAttribute("id") === "true") {
     //console.log("Correct!");
     answerPopUpEl.classList.remove("hide");
     answerPopUpEl.textContent = "Correct! ✔️";
-    score = score + 10;
+    //score = score + 10;
   } else {
     //console.log("Incorrect!");
     answerPopUpEl.classList.remove("hide");
     answerPopUpEl.textContent = "Wrong! ❌";
+    timeLeft = timeLeft - 15;
   }
   //Increment question index
   currentQuestionIndex++;
@@ -176,19 +176,21 @@ var showNextQuestion = function () {
   }
 };
 
+var timeLeft = questions.length * 15;
+var timeInterval;
+
 var countDown = function () {
-  var timeLeft = 20;
-  var timeInterval = setInterval(function () {
+  timeInterval = setInterval(function () {
     if (timeLeft > 1) {
-      timerEl.textContent = "Time Left: " + timeLeft + " seconds";
+      timerEl.textContent = "Time: " + timeLeft;
       timeLeft--;
     } else if (timeLeft === 1) {
-      timerEl.textContent = "Time Left: " + timeLeft + " seconds";
+      timerEl.textContent = "Time: " + timeLeft;
       timeLeft--;
     } else {
-      timerEl.textContent = "Time Left: 0";
-      clearInterval(timeInterval);
+      timerEl.textContent = "Time: 0";
       alert("Time is up!");
+      clearInterval(timeInterval);
       endGame();
     }
   }, 1000);
@@ -196,6 +198,9 @@ var countDown = function () {
 
 //Code for the end of the game
 var endGame = function () {
+  score = timeLeft;
+  clearInterval(timeInterval)
+  console.log(timeLeft)
   ContainerEl.classList.add("hide");
   endGameEl.classList.remove("hide");
   finalScoreEl.innerHTML = "Your Final Score is " + score;

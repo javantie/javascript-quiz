@@ -1,4 +1,16 @@
-body{
+header{
+  display: flex;
+  justify-content:space-between;
+  padding: 10px;
+
+}
+#score-link{
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 600;
+  
+}
+body {
   background-color: white;
 }
 #main {
@@ -22,7 +34,7 @@ body{
   background-color: rgba(245, 245, 245, 0.603);
   border-radius: 15px;
   padding: 18px;
- box-shadow: 0px 0px 10px 5px;
+  box-shadow: 0px 0px 10px 5px;
   margin-left: 100px;
   font-size: 15px;
   font-weight: 700;
@@ -110,7 +122,8 @@ body.correct {
   font-size: 50px;
 }
 #return-btn,
-#clear-score, .submit {
+#clear-score,
+.submit {
   margin-top: 15px;
   font-weight: 700;
   font-size: 20px;
@@ -127,42 +140,42 @@ body.correct {
   color: white;
   padding: 5px;
 }
-.submit:hover{
+.submit:hover {
   background-color: rgb(69, 173, 65);
 }
-#end-game{
-font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-padding: 10px;
-margin: 10px;
+#end-game {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  padding: 10px;
+  margin: 10px;
 }
 
 .score-data label {
-font-weight: 600;
+  font-weight: 600;
 }
-.score-data input{
-border-radius: 10px;
-background-color: rgba(228, 220, 220, 0.575);
-outline: none;
+.score-data input {
+  border-radius: 10px;
+  background-color: rgba(228, 220, 220, 0.575);
+  outline: none;
 }
-#final-score{
+#final-score {
   margin: 30px 0px 50px 0px;
 }
-
+/*Media Qurey*/
 @media screen and (max-width: 968px) {
-  #container{
+  #container {
     margin-left: 70px;
     max-width: 75%;
   }
-
 }
 @media screen and (max-width: 600px) {
-  #container{
+  #container {
     margin-left: 70px;
     max-width: 65%;
   }
 }
 @media screen and (max-width: 414px) {
-  #container{
+  #container {
     margin-left: 70px;
     max-width: 55%;
   }
