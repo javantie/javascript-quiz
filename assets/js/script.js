@@ -232,8 +232,8 @@ var saveData = function (event) {
     highScore.push(newScore);
     console.log(highScore)
     localStorage.setItem("highscore", JSON.stringify(highScore))
-    // localStorage.setItem("playerName", playerName);
-    // localStorage.setItem("score", score);
+     localStorage.setItem("playerName", playerName);
+    localStorage.setItem("score", score);
     showHighScore();
   }
 };
