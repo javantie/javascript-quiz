@@ -228,8 +228,8 @@ var saveData = function (event) {
     alert("Name cannot be blank");
   } else {
     // Save email and password to localStorage using `setItem()`
-    localStorage.setItem("Player Name", playerName);
-    localStorage.setItem("Score", score);
+    localStorage.setItem("playerName", playerName);
+    localStorage.setItem("score", score);
     showHighScore();
   }
 };
