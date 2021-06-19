@@ -17,17 +17,13 @@ body {
   padding: 5px;
   border-radius: 5px;
 }
-#back-btn,
-#delete-score {
-  margin: 15px 10px 0px 0px;
-  font-weight: 700;
-  font-size: 25px;
-  background-color: rgba(61, 33, 126, 0.938);
-  border-radius: 5px;
-  color: white;
-  padding: 5px;
-}
-#back-btn a {
-  color: white;
-  text-decoration: none;
+#back-btn, #delete-score {
+    margin: 15px 10px 0px 0px;
+    font-weight: 700;
+    font-size: 25px;
+    background-color: rgba(61, 33, 126, 0.938);
+    border-radius: 5px;
+    color: white;
+    padding: 5px;
+    cursor: pointer;
 }
