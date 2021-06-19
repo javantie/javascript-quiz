@@ -197,13 +197,12 @@ var countDown = function () {
 //Code for the end of the game
 var endGame = function () {
   score = timeLeft;
-  clearInterval(timeInterval)
-  console.log(timeLeft)
+  clearInterval(timeInterval);
+  console.log(timeLeft);
   ContainerEl.classList.add("hide");
   endGameEl.classList.remove("hide");
   finalScoreEl.innerHTML = "Your Final Score is " + score;
 };
-
 
 var showHighScore = function () {
   endGameEl.classList.add("hide");
