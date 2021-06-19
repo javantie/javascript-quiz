@@ -27,3 +27,7 @@ body {
     padding: 5px;
     cursor: pointer;
 }
+#back-btn a{
+    color: white;
+    text-decoration: none;
+}
