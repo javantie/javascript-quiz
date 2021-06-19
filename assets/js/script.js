@@ -1,5 +1,4 @@
 var startButtonEL = document.getElementById("start-btn");
-var nextButtonEl = document.getElementById("next-btn");
 var ContainerEl = document.getElementById("container");
 var questionEl = document.getElementById("question");
 var answerButtonEl = document.getElementById("answer-btn");
@@ -128,7 +127,6 @@ var startGame = function () {
   startButtonEL.classList.add("hide");
   introEl.classList.add("hide");
   ContainerEl.classList.remove("hide");
-  //nextButtonEl.classList.remove("hide");
   questionEl.textContent = questions[currentQuestionIndex].question;
   createAnswerBtn();
   countDown();
@@ -206,19 +204,16 @@ var endGame = function () {
   finalScoreEl.innerHTML = "Your Final Score is " + score;
 };
 
-var loadData = function () {
-  var PlayerName = localStorage.getItem("Player Name");
-  var score = localStorage.getItem("Score");
-  if (PlayerName === null || score === null) {
-    return;
-  }
-  scoreDataEl.textContent = PlayerName + ": " + " " + score + " points!";
-};
 
 var showHighScore = function () {
   endGameEl.classList.add("hide");
   playerStatsEl.classList.remove("hide");
-  loadData();
+  var PlayerName = localStorage.getItem("playerName");
+  var score = localStorage.getItem("score");
+  if (PlayerName === null || score === null) {
+    return;
+  }
+  scoreDataEl.textContent = PlayerName + ": " + " " + score + " points!";
 };
 
 var saveData = function (event) {
@@ -238,13 +233,8 @@ var saveData = function (event) {
 var reStart = function () {
   location.reload();
 };
-//Funtion to clear high score
-var clearScore = function () {
-  localStorage.clear();
-};
 
 //Event Listeners
 submitButtonEl.addEventListener("click", saveData);
 startButtonEL.addEventListener("click", startGame);
 goBackButtonEl.addEventListener("click", reStart);
-clearScoreButtonEl.addEventListener("click", clearScore);
