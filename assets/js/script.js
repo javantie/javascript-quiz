@@ -215,15 +215,25 @@ var showHighScore = function () {
   scoreDataEl.textContent = PlayerName + ": " + " " + score + " points!";
 };
 
+
 var saveData = function (event) {
   event.preventDefault();
   var playerName = document.getElementById("name-of-player").value;
+  var highScore= JSON.parse(localStorage.getItem("highscore")) || [];
+  var newScore = {
+    playerName: playerName,
+    score: score
+  };
+
   if (playerName === "") {
     alert("Name cannot be blank");
   } else {
     // Save email and password to localStorage using `setItem()`
-    localStorage.setItem("playerName", playerName);
-    localStorage.setItem("score", score);
+    highScore.push(newScore);
+    console.log(highScore)
+    localStorage.setItem("highscore", JSON.stringify(highScore))
+    // localStorage.setItem("playerName", playerName);
+    // localStorage.setItem("score", score);
     showHighScore();
   }
 };
