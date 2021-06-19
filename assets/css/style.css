@@ -56,6 +56,7 @@ body {
   color: white;
   outline: none;
   font-size: 20px;
+  cursor: pointer;
 }
 .btn:hover {
   border-color: black;
@@ -79,6 +80,7 @@ body {
   border-radius: 5px;
   color: white;
   padding: 5px;
+  cursor: pointer;
 }
 .start-btn-btn:hover {
   background-color: rgb(69, 173, 65);
@@ -131,6 +133,7 @@ body.correct {
   border-radius: 5px;
   color: white;
   padding: 5px;
+  cursor: pointer;
 }
 .submit {
   font-weight: 700;
@@ -139,6 +142,7 @@ body.correct {
   border-radius: 15px;
   color: white;
   padding: 5px;
+  cursor: pointer;
 }
 .submit:hover {
   background-color: rgb(69, 173, 65);
